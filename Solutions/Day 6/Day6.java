@@ -7,7 +7,7 @@ public class Day6 {
     }
 
     public static void main (String[] args) throws Exception {
-        File file = new File("C:\\Users\\Dhava\\Documents\\AdventOfCode-Continued\\src\\com\\company\\Day6Input.txt");
+        File file = new File("C:\\Users\\Dhava\\Documents\\AdventOfCode\\Inputs\\Day 6\\Day6Input.txt");
         BufferedReader br = new BufferedReader(new FileReader(file));
 
         //Solution
