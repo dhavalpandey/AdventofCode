@@ -1,3 +1,3 @@
-AdventOfCode.iml
-out
-.idea
+./AdventOfCode.iml
+./out
+./.idea
