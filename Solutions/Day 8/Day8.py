@@ -1,4 +1,4 @@
-with open('Day8.txt', 'r') as f:
+with open('../../Inputs/Day 8/Day8Input.txt', 'r') as f:
     txt = f.read().rstrip().split('\n')
 
 vis_tot = 0
