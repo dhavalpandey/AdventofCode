@@ -69,26 +69,25 @@ def solve_q1():
         false_monkey_id, new_items
 
     # Solution
-    for i in range(len(items)):
-        for j in range(len(items[i])):
-            curr_num = items[i][j]
-            temp_formula = formulas[i]
-            curr_formula = ''.join(temp_formula)
-            curr_monkey_id_if_true = true_monkey_id[i]
-            curr_monkey_id_if_false = false_monkey_id[i]
+    for _ in range(20):
+        for i in range(len(items)):
+            for j in range(len(items[i])):
+                curr_num = items[i][j]
+                temp_formula = formulas[i]
+                curr_formula = ''.join(temp_formula)
+                curr_monkey_id_if_true = true_monkey_id[i]
+                curr_monkey_id_if_false = false_monkey_id[i]
 
-            execute = curr_formula.replace('old', str(curr_num))
-            new_num = eval(execute)
-            test_int = div[i]
+                execute = curr_formula.replace('old', str(curr_num))
+                new_num = eval(execute)
+                test_int = div[i]
 
-            if math.floor(new_num / 3) % test_int == 0:
-                items[i].pop(j)
-                items[curr_monkey_id_if_true].append(math.floor(new_num / 3))
-            else:
-                items[i].pop(j)
-                items[curr_monkey_id_if_false].append(math.floor(new_num / 3))
+                new_num //= 3
+                if new_num % test_int == 0:
+                    items[curr_monkey_id_if_true].append(new_num)
+                else:
+                    items[curr_monkey_id_if_false].append(new_num)
 
-    print(new_items)
-
+    print(items)
 
 solve_q1()
