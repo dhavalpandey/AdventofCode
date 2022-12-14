@@ -27,7 +27,8 @@ def push():
         commit_message = 'Day ' + temp_day + ' complete'
 
         os.system("git add .")
-        os.system(f"git commit -m {temp_day}")
+        os.system(f"git commit -m '{commit_message}'")
+        print(f"git commit -m '{commit_message}'")
         os.system("git push origin main")
 
         success()
