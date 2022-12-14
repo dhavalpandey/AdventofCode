@@ -6,6 +6,10 @@ from datetime import date
 length_of_arguments = len(sys.argv)
 key_word = str(sys.argv[1])
 
+today = date.today()
+d3 = today.strftime("%d/%m/%y")
+day = d3[0:2]
+
 
 def error():
     print('\033[1;31m' + 'Error.' + '\x1b[0m')
@@ -17,11 +21,15 @@ def success():
     sys.exit()
 
 
-def new_day():
-    today = date.today()
-    d3 = today.strftime("%d/%m/%y")
-    day = d3[0:2]
+def push():
+    os.system("git add .")
+    os.system(f"git commit -m {today}")
+    os.system("git push origin main")
 
+    success()
+
+
+def new_day():
     input_dir = f"C:/Users/Dhava/Documents/AdventOfCode/Inputs/Day {day}"
     solution_dir = f"C:/Users/Dhava/Documents/AdventOfCode/Solutions/Day {day}"
     os.mkdir(input_dir)
@@ -36,7 +44,7 @@ def new_day():
     input = open(input_name, "x")
 
     code.write(f'with open("{input_sample_name}", "r") as f:')
-    code.write(f'\n\n')
+    code.write(f'\n')
     code.write(f'    input_file = f.read().strip().split("")')
 
     code.write(f'\n\n')
@@ -50,3 +58,5 @@ def new_day():
 
 if key_word == "new":
     new_day()
+elif key_word == "push":
+    push()
