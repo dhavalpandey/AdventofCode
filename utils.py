@@ -1,6 +1,7 @@
 import os
 import sys
 from datetime import date
+import requests
 
 length_of_arguments = len(sys.argv)
 key_word = str(sys.argv[1])
@@ -27,6 +28,32 @@ def push(day=d3[0:2]):
     success()
 
 
+def fetch_input(day):
+    url = f"https://adventofcode.com/2022/day/{day}/input"
+
+    payload={}
+    headers = {
+    'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+    'accept-encoding': 'gzip, deflate, br',
+    'accept-language': 'en-GB,en-US;q=0.9,en;q=0.8',
+    'cache-control': 'max-age=0',
+    'cookie': '_ga=GA1.2.1526790196.1671441103; _gid=GA1.2.149920977.1671441103; session=53616c7465645f5fa021ae2350a194887c0731d96b9ab1f81e920c0bbe7c1b77e979f9e49c2105556fd5b66549a650edab23834a137f21049a8b85254d0dc163',
+    'referer': 'https://adventofcode.com/2022/day/16',
+    'sec-ch-ua': '"Not?A_Brand";v="8", "Chromium";v="108", "Google Chrome";v="108"',
+    'sec-ch-ua-mobile': '?0',
+    'sec-ch-ua-platform': '"macOS"',
+    'sec-fetch-dest': 'document',
+    'sec-fetch-mode': 'navigate',
+    'sec-fetch-site': 'same-origin',
+    'sec-fetch-user': '?1',
+    'upgrade-insecure-requests': '1',
+    'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36'
+    }
+
+    response = requests.request("GET", url, headers=headers, data=payload)
+    return response.text
+
+
 def new_day(day=d3[0:2], lang="py"):
     dir = f"./{today.year}/Day{day}"
     os.mkdir(dir)
@@ -46,6 +73,9 @@ def new_day(day=d3[0:2], lang="py"):
 
     solution1.write(template.read())
     solution2.write(template2.read())
+
+    input_txt = fetch_input(day)
+    input.write(input_txt)
 
     solution1.close()
     solution2.close()
@@ -68,4 +98,3 @@ elif key_word == "push":
         push(str(sys.argv[2]))
     else:
         push()
-
