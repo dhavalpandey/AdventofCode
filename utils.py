@@ -21,7 +21,6 @@ def success():
 
 def push(day=d3[0:2]):
     try:
-        commit_message = f'Day {day}'
 
         os.system("git add .")
         os.system(f'git commit -m "Day {day} complete"')
