@@ -21,10 +21,10 @@ def success():
 
 def push(day=d3[0:2]):
     try:
-        commit_message = 'Day ' + day + ' complete'
+        commit_message = f'Day {day}'
 
         os.system("git add .")
-        os.system(f'git commit -m {day}')
+        os.system(f'git commit -m "{day} complete"')
         os.system("git push origin main")
 
         success()
