@@ -6,6 +6,7 @@ length_of_arguments = len(sys.argv)
 today = date.today()
 d3 = today.strftime("%d/%m/%y")
 
+
 def compile(day=d3[0:2], files="AB"):
     os.chdir(f'./{today.year}/Day{day}/')
 
